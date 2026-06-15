@@ -88,3 +88,30 @@ docker build -t aasofroneev/tcp-server-arch:latest .
 docker ps
 docker logs tcp-server
 docker run -it aasofroneev/tcp-server-arch:latest
+docker run -d --name tcp-server -p 1234:1234 aasofroneev/tcp-server-arch:latest
+docker ps
+docker logs tcp-server
+docker stop 6d631505da25 0410070ed52d
+docker rm 6d631505da25 0410070ed52d
+docker ps
+docker logs tcp-server
+docker login
+docker push aasofroneev/tcp-server-arch:latest
+cd ~
+echo "docker.io/aasofroneev/tcp-server-arch:latest" > DOCKERHUB_LINK.txt
+cat DOCKERHUB_LINK.txt
+git init
+git config user.email "your-email@example.com"
+git config user.name "Your Name"
+git add .
+git commit -m "Add TCP Server Docker image"
+git branch -M main
+cd ~
+git init
+git config user.email "aasofroneev@example.com"
+git config user.name "Sofroneyev"
+git add .
+git commit -m "Add TCP Server Docker image"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/tcp-server-arch.git
+git push -u origin main
